@@ -25,13 +25,8 @@ public class Receipt extends JFrame implements ActionListener {
         this.pack();
         this.setSize(new Dimension(200,400));
         this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
-    }
-
-    public static void main(String[] args) {
-        Receipt receipt = new Receipt();
-        receipt.setGUI();
     }
 
     @Override

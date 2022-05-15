@@ -67,14 +67,9 @@ public class CashView extends JFrame implements ActionListener {
         this.pack();
         this.setSize(600, 400);
         this.setVisible(true);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
     }
-    public static void main (String[]args){
-        CashView viewTest = new CashView();
-        viewTest.setGUI();
-    }
-
 
     @Override
     public void actionPerformed (ActionEvent e){

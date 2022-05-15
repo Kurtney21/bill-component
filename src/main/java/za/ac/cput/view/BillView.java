@@ -58,12 +58,7 @@ public class BillView extends JFrame implements ActionListener {
         this.pack();
         this.setSize(600,400);
         this.setVisible(true);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    }
-
-    public static void main(String[] args) {
-        BillView view = new BillView();
-        view.setGUI();
+        this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     @Override

@@ -66,7 +66,7 @@ public class CustomerView extends JFrame implements ActionListener {
         this.pack();
         this.setSize(600,400);
         this.setVisible(true);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     public static void main(String[] args) {
@@ -80,7 +80,6 @@ public class CustomerView extends JFrame implements ActionListener {
             this.setVisible(false);
             this.dispose();
             new OrderView().setGUI();
-
         }
 
 

@@ -50,12 +50,6 @@ public class CheckoutView extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
 
-
-    public static void main(String[] args) {
-        CheckoutView checkoutView = new CheckoutView();
-        checkoutView.setGUI();
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getActionCommand().equals("Cash")){
