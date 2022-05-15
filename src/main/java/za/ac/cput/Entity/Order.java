@@ -1,56 +1,57 @@
 package za.ac.cput.Entity;
 
 public class Order {
-    private String tableId, custName;
+    private String productName;
     private int qty;
-    private double price;
+    private double price, total;
 
-    public Order(String tableId, String custName, int qty, double price) {
-        this.tableId = tableId;
-        this.custName = custName;
+    public Order(String productName, int qty, double price, double total) {
+        this.productName = productName;
         this.qty = qty;
         this.price = price;
+        this.total = total;
     }
 
-    public String getTableId() {
-        return tableId;
+    public String getProductName() {
+        return productName;
     }
 
-    public String getCustName() {
-        return custName;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public int getQty() {
         return qty;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setTableId(String tableId) {
-        this.tableId = tableId;
-    }
-
-    public void setCustName(String custName) {
-        this.custName = custName;
-    }
-
     public void setQty(int qty) {
         this.qty = qty;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     public void setPrice(double price) {
         this.price = price;
     }
 
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
-                "tableId='" + tableId + '\'' +
-                ", custName='" + custName + '\'' +
+                "productName='" + productName + '\'' +
                 ", qty=" + qty +
                 ", price=" + price +
+                ", total=" + total +
                 '}';
     }
 }
+

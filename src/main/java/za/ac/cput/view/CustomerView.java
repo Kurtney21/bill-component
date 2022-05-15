@@ -2,16 +2,17 @@ package za.ac.cput.view;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class BillView extends JFrame implements ActionListener {
+public class CustomerView extends JFrame implements ActionListener {
 
     private JPanel north, south, center, east, west;
-    private JLabel header, header2;
-    private JButton cashbtn,cardbtn;
+    private JLabel header, custNameLbl, tablenumLbl;
+    private JButton nextbtn;
+    private JTextField custNameTxt, tablenumTxt;
 
-    public BillView() {
-
+    public CustomerView() {
         super("SOS");
         this.north = new JPanel();
         this.south = new JPanel();
@@ -20,12 +21,15 @@ public class BillView extends JFrame implements ActionListener {
         this.west = new JPanel();
 
         this.header = new JLabel("Customer Information", JLabel.CENTER );
-        this.header2 = new JLabel("Do you want to pay Cash or Card?", JLabel.CENTER );
+        this.custNameLbl = new JLabel("Customer Name");
+        this.tablenumLbl = new JLabel("Table number");
 
-        this.cashbtn = new JButton("Cash");
-        this.cardbtn = new JButton("Card");
+        this.nextbtn = new JButton("Next");
 
+        this.custNameTxt = new JTextField(15);
+        this.tablenumTxt= new JTextField(15);
     }
+
     public void setGUI() {
         //Adding Panels to JFrame
         this.setLayout(new BorderLayout());
@@ -46,13 +50,17 @@ public class BillView extends JFrame implements ActionListener {
         north.add(header);
 
         //Center Panel
-        center.add(header2);
-        center.add(cashbtn);
-        center.add(cardbtn);
+        center.add(custNameLbl);
+        center.add(custNameTxt);
+
+        center.add(tablenumLbl);
+        center.add(tablenumTxt);
+
+        //South Panel
+        south.add(nextbtn);
 
         //actionButtons
-        cashbtn.addActionListener(this);
-        cardbtn.addActionListener(this);
+        nextbtn.addActionListener(this);
 
         this.setLocationRelativeTo(null);
         this.pack();
@@ -62,12 +70,18 @@ public class BillView extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        BillView view = new BillView();
+        CustomerView view = new CustomerView();
         view.setGUI();
     }
 
-    @Override
+
+        @Override
     public void actionPerformed(ActionEvent e) {
+
+        if(e.getActionCommand().equals("Next")) {
+            new OrderView();
+        }
+
 
     }
 }
