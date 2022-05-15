@@ -2,6 +2,7 @@ import za.ac.cput.Entity.Product;
 import za.ac.cput.Factory.ProductFactory;
 import za.ac.cput.Repository.Implementation.ProductIRepository;
 import za.ac.cput.helper.Helper;
+import za.ac.cput.view.OrderView;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -9,6 +10,9 @@ import java.util.*;
 public class restaurantBill {
 
     public static void main(String args[]) {
+
+        OrderView orderView = new OrderView();
+
         // variables
         //Product Input variables
         String id = null;
@@ -34,7 +38,7 @@ public class restaurantBill {
         Helper.printDateFormat();
 
         System.out.print("Enter Customer Name: ");
-        String customername=scan.nextLine();
+        String customerName = scan.nextLine();
 
         do {
             // read input values
