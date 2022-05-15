@@ -14,9 +14,9 @@ public class OrderView extends JFrame implements ActionListener {
     ArrayList<Double> totals = new ArrayList<Double>();
     private ArrayList<Order> orderList = new ArrayList<Order>();
     private JPanel north, south, center, east, west;
-    private JLabel header, custNameLbl, tableNumberLbl, qtyLbl, priceLbl, productNameLbl, totalLbl;
+    private JLabel header, productNameLbl , qtyLbl, priceLbl, totalLbl;
     private JButton add, done;
-    private JTextField custTxt, tableTxt, qtyTxt, priceTxt, productNameTxt;
+    private JTextField productNameTxt, qtyTxt, priceTxt;
     ProductIRepository db = ProductIRepository.getRepository();
     ProductFactory productFactory = new ProductFactory();
 
@@ -29,11 +29,9 @@ public class OrderView extends JFrame implements ActionListener {
         this.east = new JPanel();
         this.west = new JPanel();
 
-        this.header = new JLabel("RMS", JLabel.CENTER );
-        this.custNameLbl = new JLabel("Customer Name");
+        this.header = new JLabel("Restaurant Order", JLabel.CENTER );
         this.productNameLbl = new JLabel("Product Name");
-        this.tableNumberLbl = new JLabel("Table Number");
-        this.qtyLbl = new JLabel("QTY");
+        this.qtyLbl = new JLabel("Quantity");
         this.priceLbl = new JLabel("Price");
         this.totalLbl = new JLabel("R 0.00");
 
@@ -41,11 +39,9 @@ public class OrderView extends JFrame implements ActionListener {
         this.add = new JButton("Add");
         this.done = new JButton("Done");
 
-        this.custTxt = new JTextField(15);
-        this.tableTxt= new JTextField(15);
+        this.productNameTxt = new JTextField(15);
         this.qtyTxt = new JTextField(15);
         this.priceTxt = new JTextField(15);
-        this.productNameTxt = new JTextField(15);
     }
 
     public void setGUI(){
@@ -75,11 +71,6 @@ public class OrderView extends JFrame implements ActionListener {
         north.add(header);
 
         //Center Panel
-        center.add(custNameLbl);
-        center.add(custTxt);
-
-        center.add(tableNumberLbl);
-        center.add(tableTxt);
 
         center.add(productNameLbl);
         center.add(productNameTxt);
@@ -112,25 +103,23 @@ public class OrderView extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String tableId = this.tableTxt.getText();
-        String custName = this.custTxt.getText();
+        String product = this.productNameTxt.getText();
+
 
         //add Validation Here
         int quantity = (Integer) Integer.parseInt(this.qtyTxt.getText());
         double price = (Double) Double.parseDouble(this.priceTxt.getText());
         double total = quantity * price;
-        totals.add(total);
+        //totals.add(total);
 
         for(int i = 0; i < totals.size(); i++){
             total = total + totals.get(i);
         }
 
         if(e.getActionCommand().equals("Add")){
-            orderList.add( new Order(tableId,custName,quantity,price));
-            this.tableTxt.setText("");
-            this.custTxt.setText("");
-            this.qtyTxt.setText("");
+            orderList.add( new Order(product,quantity,price, total));
             this.productNameTxt.setText("");
+            this.qtyTxt.setText("");
             this.priceTxt.setText("");
             this.totalLbl.setText("R " + total);
 
