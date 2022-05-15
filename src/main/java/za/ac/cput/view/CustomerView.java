@@ -74,12 +74,13 @@ public class CustomerView extends JFrame implements ActionListener {
         view.setGUI();
     }
 
-
         @Override
     public void actionPerformed(ActionEvent e) {
-
         if(e.getActionCommand().equals("Next")) {
-            new OrderView();
+            this.setVisible(false);
+            this.dispose();
+            new OrderView().setGUI();
+
         }
 
 

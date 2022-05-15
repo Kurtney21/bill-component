@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class OrderView extends JFrame implements ActionListener {
@@ -100,11 +101,26 @@ public class OrderView extends JFrame implements ActionListener {
         viewTest.setGUI();
     }
 
+    public Double getTotals(Order order, ArrayList<Order> orderList){
+        ArrayList<Order> p = orderList;
+        ArrayList<Double> totals = new ArrayList();
+        //add list of totals to list
+        for(int i = 0; i < p.size();i++){
+            double totalOf = p.get(i).getPrice() * p.get(i).getQty();
+            totals.add(totalOf);
+        }
+        //calculates sum of total
+        double totalRandVal = 0;
+        for(int i = 0; i < totals.size();i++){
+            totalRandVal += totals.get(i);
+        }
+        return totalRandVal;
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String product = this.productNameTxt.getText();
-
 
         //add Validation Here
         int quantity = (Integer) Integer.parseInt(this.qtyTxt.getText());
@@ -117,15 +133,12 @@ public class OrderView extends JFrame implements ActionListener {
         }
 
         if(e.getActionCommand().equals("Add")){
-            orderList.add( new Order(product,quantity,price, total));
+            Order ord = new Order(product,quantity,price, total);
+            orderList.add( ord);
             this.productNameTxt.setText("");
             this.qtyTxt.setText("");
             this.priceTxt.setText("");
-            this.totalLbl.setText("R " + total);
-
-            orderList.forEach((n) ->{
-                System.out.println(n);
-            });
+            this.totalLbl.setText("R " + getTotals(ord, orderList));
 
         }else if(e.getActionCommand().equals("Done")){
             orderList.forEach((n) ->{
