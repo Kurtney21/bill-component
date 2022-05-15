@@ -36,14 +36,14 @@ public class restaurantBill {
         System.out.print("Enter Customer Name: ");
         String customername=scan.nextLine();
 
-        do
-        {
+        do {
             // read input values
             System.out.println("Enter the product details: ");
             System.out.print("Product ID: ");
             id = scan.nextLine();
             System.out.print("Product Name: ");
             productName = scan.nextLine();
+
             System.out.print("Quantity: ");
             quantity = scan.nextInt();
             System.out.print("Price (per unit): ");
@@ -61,13 +61,15 @@ public class restaurantBill {
             choice = scan.next().substring(0);
             //read remaining characters, don't store (no use)
             scan.nextLine();
-        }
-        while (choice.toLowerCase().equals("y"));
+        } while (choice.toLowerCase().equals("y"));
+
         //display all product with its properties
         Helper.displayFormat();
+
         for (Product p : db.getProducts()) {
             Helper.display(p);
         }
+
         Helper.printSaleInformation(overAllPrice, discount, subtotal, sgst, cgst);
         // close Scanner
         scan.close();
