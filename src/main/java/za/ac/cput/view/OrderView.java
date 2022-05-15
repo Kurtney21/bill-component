@@ -141,9 +141,9 @@ public class OrderView extends JFrame implements ActionListener {
             this.totalLbl.setText("R " + getTotals(ord, orderList));
 
         }else if(e.getActionCommand().equals("Done")){
-            orderList.forEach((n) ->{
-                System.out.println(n);
-            });
+            this.setVisible(false);
+            this.dispose();
+            new CheckoutView().setGUI();
         }
     }
 }
